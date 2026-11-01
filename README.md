@@ -1,4 +1,4 @@
-# Industrial Visual Inspection
+# Industrial Visual Inspection with Anomaly Detection
 
 A CPU-friendly, unsupervised visual-inspection project that learns a baseline from defect-free product images and produces image-level anomaly scores plus a pixel-level heatmap.
 
