@@ -2,6 +2,13 @@
 
 A CPU-friendly, unsupervised visual-inspection project that learns a baseline from defect-free product images and produces image-level anomaly scores plus a pixel-level heatmap.
 
+[![CI](https://github.com/ayanirfan099/industrial-visual-inspection/actions/workflows/tests.yml/badge.svg)](https://github.com/ayanirfan099/industrial-visual-inspection/actions/workflows/tests.yml) ![Python 3.12 CI](https://img.shields.io/badge/Python-3.12_CI-3776AB)
+
+
+![Actual detector heatmaps beside generated images and known synthetic masks](reports/synthetic-demo.png)
+
+This illustration uses six generated normal training images and a separate generated test image with a square defect. It is not MVTec data and establishes no benchmark quality. Reproduce with `python -m pip install matplotlib`, then `PYTHONPATH=src python scripts/plot_synthetic_demo.py`.
+
 ## Why this project
 
 Many inspection lines have many examples of normal products and few labeled defects. This project explores a normal-only baseline: extract grayscale patch statistics, fit an Isolation Forest on normal patches, and score patches that differ from the learned baseline.
@@ -54,6 +61,10 @@ visual-inspection --data-root /path/to/mvtec_anomaly_detection --category bottle
 ```
 
 Use `--limit-good` and `--limit-defects` for a quick CPU smoke run. The same category should be used for training and evaluation. Defect labels and masks are used only for evaluation, never to fit the detector.
+
+### Benchmark availability
+
+No MVTec AD dataset is bundled or was obtained during this update. The legacy official bottle archive URL returned HTTP 404 on 1 November 2026. Use the current official dataset page above to obtain a permitted category; the existing CLI commands specify the exact local layout and report/preview options. No synthetic metric is substituted for an MVTec result.
 
 ## What to report
 
